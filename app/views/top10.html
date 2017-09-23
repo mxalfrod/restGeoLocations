@@ -1,0 +1,17 @@
+<p>This is the top10.</p>
+<table class="table table-bordered">
+ <tr>
+   <th>Date</th>
+   <th>Depth</th>
+   <th>Latitude</th>
+   <th>Longitude</th>
+   <th>Magnitude</th>
+ </tr>
+  <tr ng-repeat="quake in top10.earthquakes">
+    <td>{{quake.datetime}}</td>
+    <td>{{quake.depth}}</td>
+    <td>{{quake.lat}}</td>
+    <td>{{quake.lng}}</td>
+    <td>{{quake.magnitude}}</td>
+  </tr>
+</table>
