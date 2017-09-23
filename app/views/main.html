@@ -1,0 +1,25 @@
+<div class="jumbotron">
+  <h1>Earthquakes by city</h1>
+  <input type="text" ng-model="main.cityToSearch" />
+  <p><a class="btn btn-lg btn-success" ng-click="main.mapCity();">Map It!<span class="glyphicon glyphicon-ok"></span></a></p>
+</div>
+<script id="custom-cached-info-window-template.html" type="text/ng-template">
+  <div ng-non-bindable="">
+    Earthquake Information<br/>
+    Lat: {{anchor.getPosition().lat()}}<br/>
+    Lng: {{anchor.getPosition().lng()}}<br>
+
+    Magnitude:{{main.eq.magnitude}}<br/>
+    Latitude:{{main.eq.lat}}<br/>
+    Longitude:{{main.eq.lng}}<br/>
+    Depth:{{main.eq.depth}}<br/>
+    Date:{{main.eq.datetime}}<br/>
+  </div>
+</script>
+<ng-map center="{{main.city.lat}},{{main.city.lng}}" zoom="9">
+  <info-window id="cached" template="{{main.template.cached}}"></info-window>
+
+  <marker id="marker{{quake.eqid}}" position="[{{quake.lat}},{{quake.lng}}]" ng-repeat="(id,quake) in main.earthquakes" on-click="main.showEarthQuake(event,id)"></marker>
+
+</ng-map>
+
